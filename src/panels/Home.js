@@ -5,11 +5,12 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 import Header from '@vkontakte/vkui/dist/components/Header/Header';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
+import CellButton from '@vkontakte/vkui/dist/components/CellButton/CellButton';
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
-import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
+import {Cell} from '@vkontakte/vkui';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
-
+import {Icon28AddOutline} from '@vkontakte/icons';
 const Home = ({ id, go, fetchedUser }) => (
 	<Panel id={id}>
 		<PanelHeader>Цифровой прорыв: Off-Class</PanelHeader>
@@ -33,18 +34,17 @@ const Home = ({ id, go, fetchedUser }) => (
 				<Button stretched size="l" mode="secondary" onClick={go} data-to="spotty">
 					Ещё какая-то кнопка
 				</Button>
-			</Div>
-			
-		</Group>
+			</Div>		
 
-		<Group header={<Header mode="secondary">Пример 2</Header>}>		
-		<Div>
-				<Button stretched size="l" mode="secondary" onClick={go} data-to="spotty">
-					Ну и ещё, только под новым заголовком
-				</Button>
-			</Div>
-			</Group>
+			<Div>
+  <CellButton before={<Icon28AddOutline />}>
+	Добавить новый класс
+</CellButton>
+
+			</Div>		
+		</Group>
 	</Panel>
+
 );
 
 Home.propTypes = {
