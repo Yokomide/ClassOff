@@ -9,7 +9,7 @@ import {IconButton} from '@vkontakte/vkui';
 
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import {SimpleCell} from '@vkontakte/vkui';
-import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
+import {Avatar} from '@vkontakte/vkui';
 import {Icon28MessageOutline} from '@vkontakte/icons';
 
 const Member = props => (
@@ -20,7 +20,7 @@ const Member = props => (
 			Участники
 		</PanelHeader>
 		<Group header={<Header mode="secondary">Список</Header>}>
-		 <SimpleCell before={<Avatar size={40} src={getAvatarUrl('user_xyz')} />} 
+		 <SimpleCell
 		 after={<IconButton><Icon28MessageOutline /></IconButton>}>
 		 Игорь Фёдоров
 		 </SimpleCell>
