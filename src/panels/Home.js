@@ -11,6 +11,7 @@ import {Cell} from '@vkontakte/vkui';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 import {Icon28AddOutline} from '@vkontakte/icons';
+
 const Home = ({ id, go, fetchedUser }) => (
 	<Panel id={id}>
 		<PanelHeader>Цифровой прорыв: Off-Class</PanelHeader>
@@ -32,7 +33,7 @@ const Home = ({ id, go, fetchedUser }) => (
 			</Div>
 			<Div>
 				<Button stretched size="l" mode="secondary" onClick={go} data-to="spotty">
-					Ещё какая-то кнопка
+					Показать Спотти
 				</Button>
 			</Div>		
 
@@ -40,6 +41,13 @@ const Home = ({ id, go, fetchedUser }) => (
   <CellButton before={<Icon28AddOutline />}>
 	Добавить новый класс
 </CellButton>
+
+			<Div>
+  <Button stretched size="l" mode="secondary" onClick={go} data-to="member">
+	Участники
+</Button>
+
+			</Div>		
 
 			</Div>		
 		</Group>
