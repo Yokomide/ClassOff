@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
@@ -13,7 +12,7 @@ import {SimpleCell} from '@vkontakte/vkui';
 import {Avatar} from '@vkontakte/vkui';
 import {Icon28MessageOutline} from '@vkontakte/icons';
 
-const Member = props => (
+const Classes = props => (
 	<Panel id={props.id}>
 		<PanelHeader
 			left={<PanelHeaderBack onClick={props.go} data-to="home"/>}
@@ -22,8 +21,7 @@ const Member = props => (
 		</PanelHeader>
 		<Group header={<Header mode="secondary">Список</Header>}>
 
-		  <SimpleCell
-
+		  <SimpleCell  
 		  before={<Avatar size={36} src={getAvatarUrl('user_va')} />}
 		  after={<IconButton><Icon28MessageOutline /></IconButton>}>
 		 Игорь Фёдоров
@@ -45,4 +43,4 @@ const Member = props => (
 );
 
 
-export default Member;
+export default Classes;
