@@ -32,8 +32,6 @@ import { AdaptivityContext} from '@vkontakte/vkui/dist/components/AdaptivityProv
 import {Input} from '@vkontakte/vkui'
 import { Icon28MoreVertical } from '@vkontakte/icons';
 
-import persik from '../img/persik.png';
-import './Persik.css';
 import PanelHeaderBack from '@vkontakte/vkui/dist/components/PanelHeaderBack/PanelHeaderBack';
 
 
