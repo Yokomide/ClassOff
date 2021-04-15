@@ -12,22 +12,76 @@ import {Cell} from '@vkontakte/vkui';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 import {Icon28AddOutline} from '@vkontakte/icons';
+import {Icon24Dismiss} from '@vkontakte/icons';
 import {withAdaptivity} from '@vkontakte/vkui';
 import {PopoutWrapper} from '@vkontakte/vkui';
 import {ModalDismissButton} from '@vkontakte/vkui';
 import { ModalPageHeader, ANDROID, IOS, usePlatform } from '@vkontakte/vkui';
 import {Fragment} from '@vkontakte/vkui';
 import {PanelHeaderButton} from '@vkontakte/vkui';
+import {PanelHeaderClose} from '@vkontakte/vkui';
 import {ViewWidth} from '@vkontakte/vkui';
+import {SelectMimicry} from '@vkontakte/vkui';
+import {SizeType} from '@vkontakte/vkui';
+import {Search} from '@vkontakte/vkui';
 import {FormItem} from '@vkontakte/vkui';
 import {Input} from '@vkontakte/vkui'
 
-const MODAL_PAGE_FILTERS = 'filters';
-const MODAL_PAGE_COUNTRIES = 'countries';
-const MODAL_PAGE_STORY_FEEDBACK = 'story-feedback';
-const MODAL_PAGE_USER_INFO = 'user-info';
-const MODAL_PAGE_FULLSCREEN = 'fullscreen';
-const MODAL_PAGE_DYNAMIC = 'dynamic';
+import './ClassAvatar.css';
+
+
+  const thematics = [
+    
+    {id: 3119, name: "Гимназия"},
+    {id: 3120, name: "Колледж"},
+    {id: 3121, name: "Лицей"},
+    {id: 3122, name: "Техникум"},
+    {id: 3123, name: "Университет"},
+    {id: 3124, name: "Школа"},
+    {id: 3125, name: "Институт"},
+    {id: 3126, name: "Обучающие курсы"},
+    {id: 3276, name: "Дополнительное образование"},
+    {id: 3275, name: "Тренинг, семинар"},
+    {id: 3127, name: "Танцевальная школа"}
+
+  ];
+
+
+ class SimpleSearch extends React.Component {
+
+    constructor (props) {
+      super(props);
+      this.state = {
+        search: ''
+      }
+      this.onChange = this.onChange.bind(this);
+    }
+
+    onChange (e) { this.setState({ search: e.target.value }); }
+
+    get thematics () {
+      const search = this.state.search.toLowerCase();
+      return thematics.filter(({name}) => name.toLowerCase().indexOf(search) > -1);
+    }
+
+    render() {
+      return (
+        <React.Fragment>
+          <PanelHeader
+            right={<PanelHeaderButton onClick={this.props.goHeaderSearch}><Icon28AddOutline /></PanelHeaderButton>}
+            separator={this.props.sizeX === SizeType.REGULAR}
+          >
+            Выбор тематики
+          </PanelHeader>
+          <Group>
+            <Search value={this.state.search} onChange={this.onChange} after={null}/>  
+            {this.thematics.length > 0 && this.thematics.map(thematic => <Cell key={thematic.id}>{thematic.name}</Cell>)}
+            {this.thematics.length === 0 && <Footer>Ничего не найдено</Footer>}
+          </Group>
+        </React.Fragment>
+      );
+    }
+  }
 
 const CustomPopout = withAdaptivity(({ onClose, viewWidth }) => {
   return (
@@ -36,14 +90,31 @@ const CustomPopout = withAdaptivity(({ onClose, viewWidth }) => {
         backgroundColor: "var(--background_content)",
         borderRadius: 8,
         position: "relative",
-        padding: "12px"
+        padding: "12px",
       }}>
+<ModalPageHeader
+
+          left=<PanelHeaderClose onClick={onClose}/>
+        >
+         Новый класс
+        </ModalPageHeader>
+       <CellButton className="classAvatar" before={<Avatar shadow={true} size={72} ><Icon28AddOutline /></Avatar>} >
+       Добавить обложку
+        </CellButton>
+
       <FormItem top = "Класс">
         <Input placeholder ="Название класса" />
         </FormItem>
+
+        	<FormItem top="Тематика">            
+              <SelectMimicry placeholder="Выбрать тематику" onClick={() => this.setActiveModal(MODAL_PAGE_COUNTRIES)} />         
+            </FormItem>
+
+
         <Div>
        		<Button stretched size="l" mode="commerce" >Добавить</Button>
      	</Div>
+
 
         {viewWidth >= ViewWidth.SMALL_TABLET && <ModalDismissButton onClick={onClose} />}
       </div>
@@ -94,15 +165,8 @@ const Home = ({ id, go, fetchedUser }) => (
 					Показать Персика
 				</Button>
 			</Div>	
-			<Div>
 
 			<Div>
-
-  <Button stretched size="l" mode="secondary" onClick={go} data-to="member">
-	Участники
-</Button>
-
-			</Div>		
 				<Window />
 			</Div>		
 		</Group>

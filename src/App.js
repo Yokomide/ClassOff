@@ -8,9 +8,6 @@ import {withAdaptivity} from '@vkontakte/vkui';
 
 import Home from './panels/Home';
 import Persik from './panels/Persik';
-import Member from './panels/Member';
-import Classes from './panels/Classes';
-
 
 
 const App = () => {
@@ -44,8 +41,6 @@ const App = () => {
 				<View activePanel={activePanel} popout={popout}>
 					<Home id='home' fetchedUser={fetchedUser} go={go} />
 					<Persik id='persik' go={go} />
-					<Member id='member' go={go} />
-					<Classes id='classes' go={go} />
 
 				</View>
 			</AppRoot>
