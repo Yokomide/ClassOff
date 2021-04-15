@@ -12,6 +12,7 @@ import {Cell} from '@vkontakte/vkui';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 import {Icon28AddOutline} from '@vkontakte/icons';
+import {Icon28SearchOutline} from '@vkontakte/icons';
 import {Icon24Dismiss} from '@vkontakte/icons';
 import {withAdaptivity} from '@vkontakte/vkui';
 import {PopoutWrapper} from '@vkontakte/vkui';
@@ -27,7 +28,7 @@ import {Search} from '@vkontakte/vkui';
 import {FormItem} from '@vkontakte/vkui';
 import {Input} from '@vkontakte/vkui'
 
-import './ClassAvatar.css';
+import Script from './Script';
 
 
   const thematics = [
@@ -168,6 +169,9 @@ const Home = ({ id, go, fetchedUser }) => (
 
 			<Div>
 				<Window />
+				<CellButton before={<Icon28SearchOutline />} onClick={go} data-to="search">
+	Найти класс
+</CellButton>
 			</Div>		
 		</Group>
 	</Panel>

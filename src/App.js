@@ -8,7 +8,8 @@ import {withAdaptivity} from '@vkontakte/vkui';
 
 import Home from './panels/Home';
 import Persik from './panels/Persik';
-
+import Script from './panels/Script';
+import Search from './panels/ClassSearch';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -41,7 +42,7 @@ const App = () => {
 				<View activePanel={activePanel} popout={popout}>
 					<Home id='home' fetchedUser={fetchedUser} go={go} />
 					<Persik id='persik' go={go} />
-
+					<Search id='search' go={go} />
 				</View>
 			</AppRoot>
 		</AdaptivityProvider>
