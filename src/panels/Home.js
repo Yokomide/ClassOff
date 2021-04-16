@@ -150,7 +150,7 @@ const Window = () => {
 
 const Home = ({ id, go, fetchedUser }) => (
 	<Panel id={id}>
-		<PanelHeader> Цифровой прорыв: Off-Class</PanelHeader>
+		<PanelHeader> OffClass</PanelHeader>
 		{fetchedUser &&
 		<Group >
 			<Cell onClick={go} data-to="profile"
@@ -160,21 +160,13 @@ const Home = ({ id, go, fetchedUser }) => (
 				{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
 			</Cell>
 		</Group>}
-
-		<Group header={<Header mode="secondary">Пример кнопок навигации</Header>}>
-		  
-      <Div>
-				<Button stretched size="l" mode="secondary" onClick={go} data-to="persik">
-					Показать Персика
-				</Button>
-			</Div>	
+		  	
 			<Div>
 				<Window />
 				<CellButton before={<Icon28SearchOutline />} onClick={go} data-to="search">
 	Найти класс
 </CellButton>
 			</Div>		
-		</Group>
 	</Panel>
 
 
