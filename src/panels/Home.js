@@ -136,7 +136,7 @@ const Window = () => {
     <View popout={popout} activePanel="popout">
       <Panel id="popout">
        
-           <CellButton stretched size="l" mode="secondary" onClick={onClick}  before={<Icon28AddOutline />}>
+           <CellButton stretched size="l" onClick={onClick}  before={<Icon28AddOutline />}>
            Новый класс
            </CellButton>
 

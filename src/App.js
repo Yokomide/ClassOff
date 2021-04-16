@@ -44,7 +44,7 @@ const App = () => {
 					<Home id='home' fetchedUser={fetchedUser} go={go} />
 					<Persik id='persik' go={go} />
 					<Search id='search' go={go} />
-					<Profile id='profile' go={go} />
+					<Profile id='profile' fetchedUser={fetchedUser} go={go} />
 				</View>
 			</AppRoot>
 		</AdaptivityProvider>
