@@ -1,4 +1,6 @@
-.profc {
-	background-color: pink;
-	color: pink;
+
+.Stars{
+	position: relative;
+	float: right;
+	align-items: center;
 }

@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 import PanelHeaderBack from '@vkontakte/vkui/dist/components/PanelHeaderBack/PanelHeaderBack';
+import ActionSheet from '@vkontakte/vkui';
 import { View } from '@vkontakte/vkui';
 import { Group } from '@vkontakte/vkui';
-import Gradient from '@vkontakte/vkui/dist/components/Gradient/Gradient'
 import { Avatar } from '@vkontakte/vkui';
 import { Title } from '@vkontakte/vkui';
 import { Text } from '@vkontakte/vkui';
@@ -17,6 +17,8 @@ import { IconButton } from '@vkontakte/vkui';
 import { Icon28AddOutline } from '@vkontakte/icons';
 import { Icon28SchoolOutline } from '@vkontakte/icons';
 import { Icon28SearchOutline} from '@vkontakte/icons';
+import { Icon16Favorite } from '@vkontakte/icons';
+import { Icon28PaletteOutline } from '@vkontakte/icons';
 import { CellButton } from '@vkontakte/vkui';
 import Header from '@vkontakte/vkui/dist/components/Header/Header';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
@@ -24,9 +26,11 @@ import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import bridge from '@vkontakte/vk-bridge';
 
+
 import './Profile.css';
 
 const Profile = ({id, go, fetchedUser, sizeX}) => (
+
   <Panel id={id}>
     <PanelHeader
       left={<PanelHeaderBack onClick={go} data-to="home"/>}>
@@ -48,8 +52,7 @@ const Profile = ({id, go, fetchedUser, sizeX}) => (
               color: 'white',
             }}>
             <Avatar  size={96} src={fetchedUser.photo_200} />
-              <Title style={{ marginBottom: 8, marginTop: 20}}  level="2" weight="medium">  {`${fetchedUser.first_name} ${fetchedUser.last_name}`}</Title>
-            
+              <Title style={{ marginBottom: 8, marginTop: 20}}  level="2" weight="medium">  {`${fetchedUser.first_name} ${fetchedUser.last_name}`}</Title>  
               <Text style={{ marginBottom: 24 }}>Учащийся</Text>
               <Button size="m" color='white'mode="overlay_secondary">Редактировать</Button>
             </div>
@@ -57,12 +60,25 @@ const Profile = ({id, go, fetchedUser, sizeX}) => (
               <Header>Классы</Header>
               <Div>
               <div>
-              <SimpleCell before={<Icon28SchoolOutline fill = '#FEC194'  />} description="Ростов">
-                Английский нач. Классы</SimpleCell>
+              <SimpleCell before={<Icon28SchoolOutline fill = '#FEC194'/>} description="Ростов">
+                <Icon16Favorite  className="Stars"  fill = '#FF0061' />
+                <Icon16Favorite  className="Stars" fill = '#FF0061' />
+                <Icon16Favorite  className="Stars" fill = '#FF0061' />
+                <Icon16Favorite  className="Stars"  fill = '#FF0061' />
+                <Icon16Favorite  className="Stars"  fill = '#FF0061' />
+                Английский нач. Классы
+                </SimpleCell>
+              </div>
+              <div>
+              <SimpleCell before={<Icon28PaletteOutline fill = '#FEC194'/>} description="Ростов">
+                <Icon16Favorite  className="Stars"  fill = '#FF0061' />
+                Балет Лицей №18 группа девочек</SimpleCell>
               </div>
 
               <div>
-              <CellButton backgroundColor='#FEC194' before={<Icon28AddOutline fill = '#FEC194'   />}>Добавить класс</CellButton>
+              <CellButton backgroundColor='#FEC194' before={<Icon28AddOutline fill = '#FEC194'   />}>
+              Добавить класс
+              </CellButton>
               </div>
               </Div>
             </Group>
@@ -73,8 +89,6 @@ const Profile = ({id, go, fetchedUser, sizeX}) => (
 
 );
 
-  
-  
 
   const ExampleWithAdaptivity = withAdaptivity(Profile, { sizeX: true });
   
