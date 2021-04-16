@@ -6,7 +6,7 @@ import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader
 import PanelHeaderBack from '@vkontakte/vkui/dist/components/PanelHeaderBack/PanelHeaderBack';
 import { View } from '@vkontakte/vkui';
 import { Group } from '@vkontakte/vkui';
-import { Gradient } from '@vkontakte/vkui';
+import Gradient from '@vkontakte/vkui/dist/components/Gradient/Gradient'
 import { Avatar } from '@vkontakte/vkui';
 import { Title } from '@vkontakte/vkui';
 import { Text } from '@vkontakte/vkui';
@@ -24,113 +24,60 @@ import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import bridge from '@vkontakte/vk-bridge';
 
+import './Profile.css';
 
-
- class ProfYes extends React.Component {
-constructor(props) {
-    super(props);
-    this.state = {
-        profile: ''
-    }
-
-}
-}
-
-const Profile = ({ sizeX}) => {
-    return (
-      <View activePanel="profile">
+const Profile = ({id, go, fetchedUser, sizeX}) => (
+  <Panel id={id}>
+    <PanelHeader
+      left={<PanelHeaderBack onClick={go} data-to="home"/>}>
+    Профиль 
+    </PanelHeader>
+    <View activePanel="profile">
+      {fetchedUser &&
         <Panel id="profile">
           <Group>
-            <Gradient style={{
-              margin: sizeX === SizeType.REGULAR ? '-7px -7px 0 -7px' : 0,
+            <div style={{
+              backgroundImage: 'linear-gradient(135deg, #FEC194 0%, #FF0061 100%)',
+              marginTop: -9,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
               textAlign: 'center',
               padding: 32,
+              color: 'white',
             }}>
-            <Avatar size={96} />
-              <Title style={{ marginBottom: 8, marginTop: 20 }} level="2" weight="medium">Имя Фамилия</Title>
-              <Text style={{ marginBottom: 24, color: 'var(--text_secondary)' }}>Учащийся</Text>
-              <Button size="m" mode="secondary">Редактировать</Button>
-            </Gradient>
+            <Avatar  size={96} src={fetchedUser.photo_200} />
+              <Title style={{ marginBottom: 8, marginTop: 20}}  level="2" weight="medium">  {`${fetchedUser.first_name} ${fetchedUser.last_name}`}</Title>
+            
+              <Text style={{ marginBottom: 24 }}>Учащийся</Text>
+              <Button size="m" color='white'mode="overlay_secondary">Редактировать</Button>
+            </div>
             <Group mode="plain">
               <Header>Классы</Header>
               <Div>
               <div>
-              <SimpleCell before={<Icon28SchoolOutline />} description="Ростов">
+              <SimpleCell before={<Icon28SchoolOutline fill = '#FEC194'  />} description="Ростов">
                 Английский нач. Классы</SimpleCell>
               </div>
 
               <div>
-              <CellButton before={<Icon28AddOutline />}>Добавить класс</CellButton>
+              <CellButton backgroundColor='#FEC194' before={<Icon28AddOutline fill = '#FEC194'   />}>Добавить класс</CellButton>
               </div>
               </Div>
-
             </Group>
           </Group>
-        </Panel>
+        </Panel>}
       </View>
-    )
-  }
-
-
-const NameN = ({fetchedUser, id}) => (
-  <Panel id={id}>
-
-    <Group>
-
-   </Group>
-  </Panel>
-
-  );
-
-
-const ProfBack = props => (
-  <Panel id={props.id}>
-    <PanelHeader
-      left={<PanelHeaderBack onClick={props.go} data-to="home"/>}
-    >
-    Профиль 
-    </PanelHeader>
-      <Profile />
-      <NameN />
   </Panel>
 
 );
 
   
-
-ProfBack.propTypes = {
-	 id: PropTypes.string.isRequired,
-  go: PropTypes.func.isRequired,
-  fetchedUser: PropTypes.shape({
-    photo_200: PropTypes.string,
-    first_name: PropTypes.string,
-    last_name: PropTypes.string,
-    city: PropTypes.shape({
-      title: PropTypes.string,
-    }),
-  }),
-};
-
-NameN.propTypes = {
-   id: PropTypes.string.isRequired,
-  fetchedUser: PropTypes.shape({
-    photo_200: PropTypes.string,
-    first_name: PropTypes.string,
-    last_name: PropTypes.string,
-    city: PropTypes.shape({
-      title: PropTypes.string,
-    }),
-  }),
-};
-
   
 
   const ExampleWithAdaptivity = withAdaptivity(Profile, { sizeX: true });
   
   <ExampleWithAdaptivity />
 
-  export default ProfBack;
+  export default Profile;
