@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "14.15.4"
+    "node": "14.15.1"
   },
   "scripts": {
     "start": "cross-env PORT=10888 HTTPS=true react-scripts start",
@@ -16,6 +16,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@vercel/node": "^1.9.1",
     "cross-env": "^5.2.1",
     "react-hot-loader": "^4.9.0",
     "react-scripts": "^4.0.3"
