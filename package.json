@@ -16,7 +16,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@vercel/node": "^1.9.1",
     "cross-env": "^5.2.1",
     "react-hot-loader": "^4.9.0",
     "react-scripts": "^4.0.3"
