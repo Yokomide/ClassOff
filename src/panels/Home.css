@@ -9,9 +9,11 @@
 	box-shadow: 0px 5px 5px  rgba(29, 29, 29, .2);
 	position: relative;
 	background-color: #FEC194;
+	border-radius: 20px;
 }
 
 .coverSearchBut{
+	border-radius: 20px;
 	box-shadow: 0px 5px 5px  rgba(29, 29, 29, .2);
 	margin-top: 15px;
 	background-color: #FE9494;
@@ -19,4 +21,20 @@
 
 .fixeder {
 	position: relative;
+}
+
+.addButton{
+	background: linear-gradient(140.89deg, #FEC194 -59.7%, #FEC194 -59.66%, #FF0562 336.94%);	
+}
+
+.classAvatar {
+	border-radius: 20px;
+	color: #FEC194;
+}
+
+:root {
+    --accent:  #FEC194;
+}
+body[scheme=space_gray] {
+	--accent:  #FEC194;
 }

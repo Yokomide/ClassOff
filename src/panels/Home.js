@@ -16,7 +16,7 @@ import {List} from '@vkontakte/vkui';
 import { Icon36Add } from '@vkontakte/icons';
 import { Icon28AddOutline } from '@vkontakte/icons';
 import { Icon24Done } from '@vkontakte/icons';
-
+import { Icon24ArticleOutline } from '@vkontakte/icons';
 import {Icon28SearchOutline} from '@vkontakte/icons';
 import {Icon24Dismiss} from '@vkontakte/icons';
 import {withAdaptivity} from '@vkontakte/vkui';
@@ -30,7 +30,7 @@ import {ViewWidth} from '@vkontakte/vkui';
 import {SelectMimicry} from '@vkontakte/vkui';
 import {SizeType} from '@vkontakte/vkui';
 import {Search} from '@vkontakte/vkui';
-
+import {Tabs, TabsItem} from '@vkontakte/vkui';
 import {FormItem} from '@vkontakte/vkui';
 import {Input} from '@vkontakte/vkui'
 import { Icon24MenuOutline } from '@vkontakte/icons';
@@ -126,11 +126,11 @@ const CustomPopout = withAdaptivity(({ onClose, viewWidth, go}) => {
       }}>
 <ModalPageHeader
 
-          left=<PanelHeaderClose onClick={onClose}/>
+          left=<PanelHeaderClose style={{color: "#FEC194"}} onClick={onClose}/>
         >
          Новый класс
         </ModalPageHeader>
-       <CellButton className="classAvatar" before={<Avatar shadow={true} size={72} ><Icon28AddOutline /></Avatar>} >
+       <CellButton  className="classAvatar" before={<Avatar shadow={true} size={72} ><Icon28AddOutline fill="#D6D6D6" /></Avatar>} >
        Добавить обложку
         </CellButton>
 
@@ -141,7 +141,7 @@ const CustomPopout = withAdaptivity(({ onClose, viewWidth, go}) => {
                            <Mim />
                            </div>
         <Div >
-       		<Button stretched size="l" mode="commerce" onClick={go} data-to="profile" >Добавить</Button>
+       		<Button className="addButton" stretched size="l" mode="commerce" onClick={onClose} >Добавить</Button>
      	</Div>
 
 
@@ -183,13 +183,18 @@ const Home = ({ id, go, fetchedUser }) => (
 		<Group >
 			<Cell  onClick={go} data-to="profile"
 				before={fetchedUser.photo_200 ? <Avatar  src={fetchedUser.photo_200}/> : null}
-        after = {<Icon24MenuOutline fill="#99A2AD"/>}
+        after = {<  Icon24ArticleOutline fill="#99A2AD"/>}
 				description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
 			>
 				{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
 			</Cell>
 		</Group>}
-		  	
+		  	<Tabs>
+        <TabsItem className="tabStyle" selected>Главная</TabsItem>
+        <TabsItem >
+          Классы
+        </TabsItem>
+      </Tabs>
 			<Div>
 				<Window />
         <div onClick={go} data-to="search">
