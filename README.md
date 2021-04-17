@@ -1,6 +1,9 @@
 ![Logo](https://github.com/Yokomide/ClassOff/raw/main/logo_large.png)
 ____
 
+                                      **Ссылка на приложение: https://vk.com/app7820706**
+____
+
 # OffClass
 
 ## «Мы предоставляем мини-приложение для трекинга развития школьников в офлайн-кружках и секциях»
