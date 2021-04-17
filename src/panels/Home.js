@@ -11,7 +11,9 @@ import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import {Cell} from '@vkontakte/vkui';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
-import {Icon28AddOutline} from '@vkontakte/icons';
+import { Icon36Add } from '@vkontakte/icons';
+import { Icon28AddOutline } from '@vkontakte/icons';
+
 import {Icon28SearchOutline} from '@vkontakte/icons';
 import {Icon24Dismiss} from '@vkontakte/icons';
 import {withAdaptivity} from '@vkontakte/vkui';
@@ -27,6 +29,7 @@ import {SizeType} from '@vkontakte/vkui';
 import {Search} from '@vkontakte/vkui';
 import {FormItem} from '@vkontakte/vkui';
 import {Input} from '@vkontakte/vkui'
+import { Icon24MenuOutline } from '@vkontakte/icons';
 
 import Script from './Script';
 import './Home.css';
@@ -136,11 +139,11 @@ const Window = () => {
   return (
     <View popout={popout} activePanel="popout">
       <Panel id="popout">
-       
-           <CellButton stretched size="l" onClick={onClick}  before={<Icon28AddOutline />}>
+       <div onClick={onClick} >
+           <Button className="coverAddBut" stretched size="l" after={<Icon36Add width={100} height={100} />}>
            Новый класс
-           </CellButton>
-
+           </Button>
+        </div>
       </Panel>
     </View>
   );
@@ -153,8 +156,9 @@ const Home = ({ id, go, fetchedUser }) => (
 		<PanelHeader> OffClass</PanelHeader>
 		{fetchedUser &&
 		<Group >
-			<Cell onClick={go} data-to="profile"
-				before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
+			<Cell  onClick={go} data-to="profile"
+				before={fetchedUser.photo_200 ? <Avatar  src={fetchedUser.photo_200}/> : null}
+        after = {<Icon24MenuOutline fill="#99A2AD"/>}
 				description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
 			>
 				{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
@@ -163,9 +167,11 @@ const Home = ({ id, go, fetchedUser }) => (
 		  	
 			<Div>
 				<Window />
-				<CellButton before={<Icon28SearchOutline />} onClick={go} data-to="search">
+        <div onClick={go} data-to="search">
+				<Button  className="coverSearchBut" stretched size="l" after={<Icon28SearchOutline width={100} height={100} />}>
 	Найти класс
-</CellButton>
+</Button>
+</div>
 			</Div>		
 	</Panel>
 

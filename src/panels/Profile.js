@@ -75,11 +75,6 @@ const Profile = ({id, go, fetchedUser, sizeX}) => (
                 Балет Лицей №18 группа девочек</SimpleCell>
               </div>
 
-              <div>
-              <CellButton backgroundColor='#FEC194' before={<Icon28AddOutline fill = '#FEC194'   />}>
-              Добавить класс
-              </CellButton>
-              </div>
               </Div>
             </Group>
           </Group>

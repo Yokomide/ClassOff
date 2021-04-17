@@ -7,7 +7,6 @@ import '@vkontakte/vkui/dist/vkui.css';
 import {withAdaptivity} from '@vkontakte/vkui';
 
 import Home from './panels/Home';
-import Persik from './panels/Persik';
 import Script from './panels/Script';
 import Search from './panels/ClassSearch';
 import Profile from './panels/Profile';
@@ -42,7 +41,6 @@ const App = () => {
 			<AppRoot>
 				<View activePanel={activePanel} popout={popout}>
 					<Home id='home' fetchedUser={fetchedUser} go={go} />
-					<Persik id='persik' go={go} />
 					<Search id='search' go={go} />
 					<Profile id='profile' fetchedUser={fetchedUser} go={go} />
 				</View>

@@ -5,3 +5,14 @@
 .showbutton {
 	background-color: #FEC194;
 }
+.coverAddBut{
+	box-shadow: 0px 5px 5px  rgba(29, 29, 29, .2);
+	background-color: #FEC194;
+}
+
+.coverSearchBut{
+	box-shadow: 0px 5px 5px  rgba(29, 29, 29, .2);
+	margin-top: 15px;
+	background-color: #FE9494;
+}
+
