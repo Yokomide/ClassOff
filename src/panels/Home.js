@@ -34,6 +34,8 @@ import {Tabs, TabsItem} from '@vkontakte/vkui';
 import {FormItem} from '@vkontakte/vkui';
 import {Input} from '@vkontakte/vkui'
 import { Icon24MenuOutline } from '@vkontakte/icons';
+import {CardGrid, Card, ContentCard} from '@vkontakte/vkui';
+
 
 import Script from './Script';
 import './Home.css';
@@ -164,7 +166,7 @@ const Window = () => {
     <View popout={popout} activePanel="popout">
       <Panel id="popout">
        <div onClick={onClick} >
-           <Button className="coverAddBut" stretched size="l" after={<Icon36Add width={100} height={100} />}>
+           <Button className="coverAddBut" stretched size="l" after={<Icon36Add width={70} height={70} />}>
            Новый класс
            </Button>
         </div>
@@ -198,11 +200,27 @@ const Home = ({ id, go, fetchedUser }) => (
 			<Div>
 				<Window />
         <div onClick={go} data-to="search">
-				<Button  className="coverSearchBut" stretched size="l" after={<Icon28SearchOutline width={100} height={100} />}>
+				<Button  className="coverSearchBut" stretched size="l" after={<Icon28SearchOutline width={70} height={70} />}>
 	Найти класс
 </Button>
 </div>
-			</Div>		
+			</Div>	
+       <CardGrid style={{marginTop: 10}} size="m">
+        <ContentCard    
+              subtitle="Английский"
+              header="Выучить текст"
+              caption="Вы должны выучить текст на странице 45 + доп. задания"
+            >
+          <div style={{ paddingBottom: '62%' }} />
+        </ContentCard>
+         <ContentCard    
+              subtitle="Балет"
+              header="Разминка"
+              caption="Вы должны выполнять следующие упражнения самостоятельно..."
+            >
+          <div style={{ paddingBottom: '62%' }} />
+          </ContentCard>
+      </CardGrid>	
 	</Panel>
 
 
