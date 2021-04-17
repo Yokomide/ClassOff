@@ -7,6 +7,7 @@
 }
 .coverAddBut{
 	box-shadow: 0px 5px 5px  rgba(29, 29, 29, .2);
+	position: relative;
 	background-color: #FEC194;
 }
 
@@ -16,3 +17,6 @@
 	background-color: #FE9494;
 }
 
+.fixeder {
+	position: relative;
+}

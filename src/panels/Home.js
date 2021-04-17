@@ -11,8 +11,11 @@ import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import {Cell} from '@vkontakte/vkui';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
+import {Root} from '@vkontakte/vkui';
+import {List} from '@vkontakte/vkui';
 import { Icon36Add } from '@vkontakte/icons';
 import { Icon28AddOutline } from '@vkontakte/icons';
+import { Icon24Done } from '@vkontakte/icons';
 
 import {Icon28SearchOutline} from '@vkontakte/icons';
 import {Icon24Dismiss} from '@vkontakte/icons';
@@ -27,6 +30,7 @@ import {ViewWidth} from '@vkontakte/vkui';
 import {SelectMimicry} from '@vkontakte/vkui';
 import {SizeType} from '@vkontakte/vkui';
 import {Search} from '@vkontakte/vkui';
+
 import {FormItem} from '@vkontakte/vkui';
 import {Input} from '@vkontakte/vkui'
 import { Icon24MenuOutline } from '@vkontakte/icons';
@@ -34,61 +38,84 @@ import { Icon24MenuOutline } from '@vkontakte/icons';
 import Script from './Script';
 import './Home.css';
 
+  class Mim extends React.Component {
 
-  const thematics = [
-    
-    {id: 3119, name: "Гимназия"},
-    {id: 3120, name: "Колледж"},
-    {id: 3121, name: "Лицей"},
-    {id: 3122, name: "Техникум"},
-    {id: 3123, name: "Университет"},
-    {id: 3124, name: "Школа"},
-    {id: 3125, name: "Институт"},
-    {id: 3126, name: "Обучающие курсы"},
-    {id: 3276, name: "Дополнительное образование"},
-    {id: 3275, name: "Тренинг, семинар"},
-    {id: 3127, name: "Танцевальная школа"}
-
-  ];
-
-
- class SimpleSearch extends React.Component {
-
-    constructor (props) {
+    constructor(props) {
       super(props);
       this.state = {
-        search: ''
+        theme: '',
+        activeView: 'profile'
       }
-      this.onChange = this.onChange.bind(this);
     }
 
-    onChange (e) { this.setState({ search: e.target.value }); }
-
-    get thematics () {
-      const search = this.state.search.toLowerCase();
-      return thematics.filter(({name}) => name.toLowerCase().indexOf(search) > -1);
-    }
-
-    render() {
+    render () {
       return (
-        <React.Fragment>
-          <PanelHeader
-            right={<PanelHeaderButton onClick={this.props.goHeaderSearch}><Icon28AddOutline /></PanelHeaderButton>}
-            separator={this.props.sizeX === SizeType.REGULAR}
-          >
-            Выбор тематики
-          </PanelHeader>
-          <Group>
-            <Search value={this.state.search} onChange={this.onChange} after={null}/>  
-            {this.thematics.length > 0 && this.thematics.map(thematic => <Cell key={thematic.id}>{thematic.name}</Cell>)}
-            {this.thematics.length === 0 && <Footer>Ничего не найдено</Footer>}
-          </Group>
-        </React.Fragment>
-      );
+        <Root activeView={this.state.activeView}>
+          <View activePanel="profile" id="profile">
+            <Panel id="profile">
+              <Group>
+                <FormItem top="Выберите тему">
+                  <SelectMimicry
+                    placeholder="Не выбрана"
+                    onClick={() => this.setState({ activeView: 'themes' })}
+                  >{this.state.theme}</SelectMimicry>
+                </FormItem>            
+              </Group>
+            </Panel>
+          </View>
+          <View activePanel="themes" id="themes">
+            <Panel id="themes">
+              <Group header={<Header mode="secondary">Выбрать тему</Header>}>
+                <List>
+                  <Cell
+                    onClick={() => this.setState({ theme: 'Социально-педагогическая', activeView: 'profile' })}
+                    after={this.state.theme === 'Социально-педагогическая' ? <Icon24Done fill="var(--accent)" /> : null}
+                  >
+                    Социально-педагогическая
+                  </Cell>
+                  <Cell
+                    onClick={() => this.setState({theme: 'Художественная', activeView: 'profile' })}
+                    after={this.state.theme === 'Художественная' ? <Icon24Done fill="var(--accent)" /> : null}
+                  >
+                    Художественная
+                  </Cell>
+                  <Cell
+                    onClick={() => this.setState({ theme: 'Естественно-научная', activeView: 'profile' })}
+                    after={this.state.theme === 'Естественно-научная' ? <Icon24Done fill="var(--accent)" /> : null}
+                  >
+                    Естественно-научная
+                  </Cell>
+                     <Cell
+                    onClick={() => this.setState({ theme: 'Техническая', activeView: 'profile' })}
+                    after={this.state.theme === 'Техническая' ? <Icon24Done fill="var(--accent)" /> : null}
+                  >
+                    Техническая
+                  </Cell>
+
+                     <Cell
+                    onClick={() => this.setState({ theme: 'Туристско-краеведческая', activeView: 'profile' })}
+                    after={this.state.theme === 'Туристско-краеведческая' ? <Icon24Done fill="var(--accent)" /> : null}
+                  >
+                    Туристско-краеведческая
+                  </Cell>
+
+                  <Cell
+                    onClick={() => this.setState({ theme: 'Физкультурно-спортивная', activeView: 'profile' })}
+                    after={this.state.theme === 'Физкультурно-спортивная' ? <Icon24Done fill="var(--accent)" /> : null}
+                  >
+                    Физкультурно-спортивная
+                  </Cell>
+                </List>
+              </Group>
+            </Panel>
+          </View>
+        </Root>
+      )
     }
   }
 
-const CustomPopout = withAdaptivity(({ onClose, viewWidth }) => {
+
+const CustomPopout = withAdaptivity(({ onClose, viewWidth, go}) => {
   return (
     <PopoutWrapper onClick={onClose}>
       <div style={{
@@ -110,14 +137,11 @@ const CustomPopout = withAdaptivity(({ onClose, viewWidth }) => {
       <FormItem top = "Класс">
         <Input placeholder ="Название класса" />
         </FormItem>
-
-        	<FormItem top="Тематика">            
-              <SelectMimicry placeholder="Выбрать тематику" onClick={() => this.setActiveModal(MODAL_PAGE_COUNTRIES)} />         
-            </FormItem>
-
-
-        <Div>
-       		<Button stretched size="l" mode="commerce" >Добавить</Button>
+        <div  className='fixeder'>
+                           <Mim />
+                           </div>
+        <Div >
+       		<Button stretched size="l" mode="commerce" onClick={go} data-to="profile" >Добавить</Button>
      	</Div>
 
 
@@ -144,6 +168,7 @@ const Window = () => {
            Новый класс
            </Button>
         </div>
+
       </Panel>
     </View>
   );
