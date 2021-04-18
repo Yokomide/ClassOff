@@ -58,7 +58,7 @@ const Profile = ({id, go, fetchedUser, sizeX}) => (
             </div>
             <Group mode="plain">
               <Header>Классы</Header>
-              <Div>
+              <Div onClick={go} data-to="classprofile">
               <div>
               <SimpleCell before={<Icon28SchoolOutline fill = '#FEC194'/>} description="Ростов">
                 <Icon16Favorite  className="Stars"  fill = '#FF0061' />

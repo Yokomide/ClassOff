@@ -10,6 +10,7 @@ import Home from './panels/Home';
 import Script from './panels/Script';
 import Search from './panels/ClassSearch';
 import Profile from './panels/Profile';
+import ClassProfile from './panels/ClassProfile';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -43,6 +44,7 @@ const App = () => {
 					<Home id='home' fetchedUser={fetchedUser} go={go} />
 					<Search id='search' go={go} />
 					<Profile id='profile' fetchedUser={fetchedUser} go={go} />
+					<ClassProfile id='classprofile' fetchedUser={fetchedUser} go={go} />
 				</View>
 			</AppRoot>
 		</AdaptivityProvider>

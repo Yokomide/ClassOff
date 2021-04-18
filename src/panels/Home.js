@@ -117,7 +117,7 @@ import './Home.css';
   }
 
 
-const CustomPopout = withAdaptivity(({ onClose, viewWidth, go}) => {
+const CustomPopout = withAdaptivity(({ onClose, viewWidth, go }) => {
   return (
     <PopoutWrapper onClick={onClose}>
       <div style={{
@@ -126,30 +126,30 @@ const CustomPopout = withAdaptivity(({ onClose, viewWidth, go}) => {
         position: "relative",
         padding: "12px",
       }}>
-<ModalPageHeader
+        <ModalPageHeader
 
-          left=<PanelHeaderClose style={{color: "#FEC194"}} onClick={onClose}/>
+          left=<PanelHeaderClose style={{ color: "#FEC194" }} onClick={onClose}/>
         >
-         Новый класс
+        Новый класс
         </ModalPageHeader>
-       <CellButton  className="classAvatar" before={<Avatar shadow={true} size={72} ><Icon28AddOutline fill="#D6D6D6" /></Avatar>} >
-       Добавить обложку
-        </CellButton>
+      <CellButton className="classAvatar" before={<Avatar shadow={true} size={72} ><Icon28AddOutline fill="#D6D6D6" /></Avatar>} >
+        Добавить обложку
+      </CellButton>
 
-      <FormItem top = "Класс">
-        <Input placeholder ="Название класса" />
-        </FormItem>
-        <div  className='fixeder'>
-                           <Mim />
-                           </div>
-        <Div >
-       		<Button className="addButton" stretched size="l" mode="commerce" onClick={onClose} >Добавить</Button>
-     	</Div>
-
-
-        {viewWidth >= ViewWidth.SMALL_TABLET && <ModalDismissButton onClick={onClose} />}
+      <FormItem top="Класс">
+        <Input placeholder="Название класса" />
+      </FormItem>
+      <div className='fixeder'>
+        <Mim />
       </div>
-    </PopoutWrapper>
+      <Div >
+        <Button className="addButton" stretched size="l" mode="commerce" onClick={onClose} >Добавить</Button>
+      </Div>
+
+
+      {viewWidth >= ViewWidth.SMALL_TABLET && <ModalDismissButton onClick={onClose} />}
+      </div>
+    </PopoutWrapper >
   )
 }, {
   viewWidth: true
@@ -176,8 +176,6 @@ const Window = () => {
   );
 }
 
-
-
 const Home = ({ id, go, fetchedUser }) => (
 	<Panel id={id}>
 		<PanelHeader> OffClass</PanelHeader>
@@ -193,7 +191,7 @@ const Home = ({ id, go, fetchedUser }) => (
 		</Group>}
 		  	<Tabs>
         <TabsItem className="tabStyle" selected>Главная</TabsItem>
-        <TabsItem >
+        <TabsItem>
           Классы
         </TabsItem>
       </Tabs>
@@ -222,11 +220,7 @@ const Home = ({ id, go, fetchedUser }) => (
           </ContentCard>
       </CardGrid>	
 	</Panel>
-
-
 );
-
-
 
 Home.propTypes = {
 	id: PropTypes.string.isRequired,
@@ -240,5 +234,6 @@ Home.propTypes = {
 		}),
 	}),
 };
+
 
 export default Home;

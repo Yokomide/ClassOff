@@ -35,7 +35,7 @@ import { Icon28MoreVertical } from '@vkontakte/icons';
 import PanelHeaderBack from '@vkontakte/vkui/dist/components/PanelHeaderBack/PanelHeaderBack';
 
 
-const thematics = [
+export const thematics = [
   {id: 8467892, name: "Волейбол МБОУ СОШ №31 3 класс"},
   {id: 2579074, name: "Баскетбол МОУ 'Школа №13' подгруппа 1"},
   {id: 8576392, name: "Шахматы Гимназия №42"},
